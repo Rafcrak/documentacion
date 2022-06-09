@@ -41,7 +41,7 @@ sudo systemctl status k3s
 La salida del comando anterior tiene que ser parecida a esta:
 
 ~~~
-adrian@master:~$ sudo systemctl status k3s
+rafa@master:~$ sudo systemctl status k3s
 ● k3s.service - Lightweight Kubernetes
     Loaded: loaded (/etc/systemd/system/k3s.service; enabled; vendor preset: enabled)
     Active: active (running) since Tue 2022-05-24 13:00:04 CEST; 2min 6s ago
@@ -77,7 +77,7 @@ may 24 13:02:09 master k3s[4653]: I0524 13:02:09.569646    4653 job_controller.g
 - La ultima comprobacion es correr el siguiente comando, que debería  devolvernos todos los nodos incluidos en el cluster, de momento solo tenemos el master:
 
 ~~~
-adrian@master:~$ sudo kubectl get nodes
+rafa@master:~$ sudo kubectl get nodes
 NAME     STATUS   ROLES                  AGE   VERSION
 master   Ready    control-plane,master   6m    v1.23.6+k3s1
 ~~~
@@ -90,14 +90,14 @@ Tienes que hacer los prerequisitos citados anteriormente.
 
 Para poder unir al cluster un node worker tienes que sacar el token del node master con el siguiente comando:
 ~~~
-adrian@master:~$ sudo cat /var/lib/rancher/k3s/server/node-token
+rafa@master:~$ sudo cat /var/lib/rancher/k3s/server/node-token
 K1063be211206d860b89a9128d3fa396befd28423606d78c3ed1432e7e7873a2aac::server:2bb4732aa6aca7cab3427778b9977135
 ~~~
 
 Antes de lanzar el script de unión vamos hacer una comprobación, vamos a ver que tenemos ping mediante el nombre que hemos puesto en el archivo **"/etc/hosts"**
 
 ~~~
-adrian@worker1:~$ ping master.civica.lab
+rafa@worker1:~$ ping master.civica.lab
 PING master.civica.lab (192.168.90.2) 56(84) bytes of data.
 64 bytes from master.civica.lab (192.168.90.2): icmp_seq=1 ttl=64 time=0.646 ms
 64 bytes from master.civica.lab (192.168.90.2): icmp_seq=2 ttl=64 time=0.658 ms
@@ -122,7 +122,7 @@ curl -sfL https://get.k3s.io | K3S_URL=https://master.civica.lab:6443 K3S_TOKEN=
 
 Tras lanzar estes comando se nos ha instalado el agente de k3s, para comprobar si todo esta correcto tras la instalación vamos a comprobar primero el estado del agente k3s:
 ~~~
-adrian@worker1:~$ sudo systemctl status k3s-agent.service
+rafa@worker1:~$ sudo systemctl status k3s-agent.service
 ● k3s-agent.service - Lightweight Kubernetes
      Loaded: loaded (/etc/systemd/system/k3s-agent.service; enabled; vendor preset: enabled)
      Active: active (running) since Tue 2022-05-24 13:27:22 CEST; 1min 56s ago
@@ -153,7 +153,7 @@ may 24 13:27:47 worker1 k3s[3725]: I0524 13:27:47.265422    3725 topology_manage
 
 La siguiente comprobación es desde el equipo master volvemos a realizar el comando para ver que nodos tenemos en nuestro cluster y deberia de salirnos nuestro worker1:
 ~~~
-adrian@master:~$ sudo kubectl get nodes
+rafa@master:~$ sudo kubectl get nodes
 NAME      STATUS   ROLES                  AGE     VERSION
 master    Ready    control-plane,master   31m     v1.23.6+k3s1
 worker1   Ready    <none>                 3m45s   v1.23.6+k3s1
