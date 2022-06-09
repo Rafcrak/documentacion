@@ -1,0 +1,34 @@
+#Regla para evitar conflictos con los certificados 
+[serversTransport]
+  insecureSkipVerify = true
+#Puertos por lo que entrarán las peticiones
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+  [entryPoints.websecure]
+    address = ":443"
+  [entryPoints.ssh]
+    address = ":2222"
+  [entryPoints.remoto]
+    address = ":3389"
+[providers]
+  #Habilita la lectura de docker
+  [providers.docker]
+    #Para que lea los cambios constantemente
+    watch = true
+    exposedByDefault = false
+  [providers.file]
+    watch = true
+    #Ruta de la carpeta donde están los ficheros de configuración dinámicos
+    directory = "/etc/traefik/services"
+[api]
+  #Para poder entrar a la configuración del traefik en http
+  insecure = true
+  dashboard = true
+#Archivo donde se guardan los certificados
+[acme]
+  email = "rafael.romera@civica-soft.com"
+  storage = "/etc/traefik/acme.json"
+  entryPoint = "websecure"
+  onDemand = true
+  onHostRule = true

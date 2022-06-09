@@ -1,0 +1,32 @@
+site_name: Documentación
+repo_url: https://bitbucket.org/civica-sistemas/documentacion
+repo_name: Bitbucket
+nav:
+    - Inicio: 'index.md'
+    - Adrian Barranco: './adrian_barranco/index.md'
+    - Rafael Romera: './rafa_romera/index.md'
+    - Kubernetes: './kubernetes/index.md'
+theme:
+    name: mkdocs
+    lenguage: es
+    locale: es
+    include_sidebar: false
+    features:
+      - navigation.instant
+      - navigation.tracking
+      - navigation.tabs
+      - navigation.tabs.sticky
+      - navigation.tabs.sections
+    palette: 
+      - scheme: default
+        primary: red
+        accent: red
+        toggle:
+          icon: material/weather-sunny 
+          name: Cambiar al modo oscuro
+      - scheme: slate
+        toggle:
+          icon: material/weather-night
+          name: Cambiar al modo claro
+    font:
+      code: Source Code Pro

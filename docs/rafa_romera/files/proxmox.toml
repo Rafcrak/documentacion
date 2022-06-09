@@ -1,0 +1,31 @@
+[http]
+  [http.routers]
+    #Aqui pondremos el nombre de un routers
+    [http.routers.proxmox]
+      #Porque puerto se va a conectar
+      entryPoints = ["websecure"]
+      #El servicio que va a lanzar
+      service = "proxmox"
+      #El intermediario que va a utilizar
+      middlewares = ["proxmox"]
+      #La URL que va a reenviar
+      rule = "Host(`proxmox.civica.ra`)"
+      #Como es una página segura creamos un TLS
+      [http.routers.proxmox.tls]
+        #Creamos un certificado simple
+        certResolver = "sample"
+  #Aqui creamos un intermidiario de autentificación básica 
+  [http.middlewares]
+    [http.middlewares.proxmox.basicAuth]
+      #Este usuario se a creado con el comando "htpasswd -nb usuario contraseña"
+      users = [
+        "admin:$apr1$J5zByFlE$Hvu/I0MXESVhLQlJ4c8Qx1",
+      ]
+  #El servicio
+  [http.services]
+    [http.services.proxmox]
+      [http.services.proxmox.loadBalancer]
+        passHostHeader = true
+      [[http.services.proxmox.loadBalancer.servers]]
+        #La URL que va a cargar el servicio
+        url = "https://192.168.80.150:8006"

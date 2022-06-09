@@ -1,0 +1,11 @@
+[tcp]
+  [tcp.routers]
+    [tcp.routers.sshProxmox]
+      entryPoints = ["ssh"] 
+      service = "sshProxmox"
+      rule = "HostSNI(`*`)"
+      #[tcp.routers.sshProxmox.tls]
+  [tcp.services.sshProxmox]
+    [tcp.services.sshProxmox.loadBalancer]
+    [[tcp.services.sshProxmox.loadBalancer.servers]]
+      address = "192.168.80.150:22"

@@ -1,0 +1,39 @@
+version: "3.3"
+services:
+  #Aquí pondremos el servicio traefik
+  traefik:
+    #Utilizaremos la imagen de traefik en la versión 2.7
+    image: "traefik:v2.7"
+    #El nombre del contenedor será traefik
+    container_name: "traefik"
+    #Los puertos que abriremos en el docker a la máquina anfitriona
+    ports:
+      - "2222:2222"
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+      - "3389:3389"
+    #Los ficheros que compartiremos al docker
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock" #Este fichero sirve para conectarse a otros dockers
+      - "$HOME/traefik/traefik.toml:/etc/traefik/traefik.toml:ro"  #Este es el fichero de configuración estático (Es la configuración principal)
+      - "$HOME/traefik/acme.json:/etc/traefik/acme.json"  #Este fichero sirve para los certificados
+      - "$HOME/traefik/services/:/etc/traefik/services/" #En esta carpeta contendrá ficheros de configuración de servicios
+    #En los labels pondremos las etiquetas que utilizará traefik para crear una redirrección del servicio
+    labels:
+      traefik.enable: true #Habilita traefik
+      traefik.http.routers.traefik.rule: Host(`traefik.civica.ra`) #Le asigna una URL al servicio
+      traefik.http.routers.traefik.service: api@internal #Le asigna el servicio que se va a ejecutar
+      traefik.http.routers.traefik.entrypoints: web #Asigna el puerto de entrada
+      traefik.http.routers.traefik.middlewares: error-pages-middleware #Asigna un intermediario (En este caso son página de errores)
+    #Aqui asignamos la red que utilizará el contenedor
+    networks:
+      - traefik
+#Aquí se creará la red que se utilizarán en los contenedores (Pero en esté caso se utilizará una Red ya existente)
+networks:
+  #Nombre de la red
+  traefik:
+    #Indicamos que es una red externa
+    external: true
+
+

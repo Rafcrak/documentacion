@@ -1,0 +1,14 @@
+[tcp]
+  [tcp.routers]
+    [tcp.routers.ws]
+      entryPoints = ["remoto"] 
+      service = "ws"
+      #Importante poner el HostSNI con * para no tener que depender del TLS
+      rule = "HostSNI(`*`)"
+      #[tcp.routers.ws.tls]
+        #passthrough = true
+  [tcp.services]  
+    [tcp.services.ws]
+      [tcp.services.ws.loadBalancer]
+        [[tcp.services.ws.loadBalancer.servers]]
+          address = "192.168.80.5:3389"
