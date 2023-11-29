@@ -37,13 +37,13 @@ services:
     #Los ficheros que compartiremos al docker
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock" #Este fichero sirve para conectarse a otros dockers
-      - "$HOME/traefik/traefik.toml:/etc/traefik/traefik.toml:ro"  #Este es el fichero de configuración estático (Es la configuración principal)
-      - "$HOME/traefik/acme.json:/etc/traefik/acme.json"  #Este fichero sirve para los certificados
-      - "$HOME/traefik/services/:/etc/traefik/services/" #En esta carpeta contendrá ficheros de configuración de servicios
-    #En los labels pondremos las etiquetas que utilizará traefik para crear una redirrección del servicio
+      - "{PWD}/conf/traefik.toml:/etc/traefik/traefik.toml:ro"  #Este es el fichero de configuración estático (Es la configuración principal)
+      - "{PWD}/conf/acme.json:/etc/traefik/acme.json"  #Este fichero sirve para los certificados
+      - "{PWD}/conf/services/:/etc/traefik/services/" #En esta carpeta contendrá ficheros de configuración de servicios
+    #En los labels pondremos las etiquetas que utilizará traefik para crear una redirrección del servicio (No los utilizo)
     labels:
       traefik.enable: true #Habilita traefik
-      traefik.http.routers.traefik.rule: Host(`traefik.civica.ra`) #Le asigna una URL al servicio
+      traefik.http.routers.traefik.rule: Host(`proxy.borderlands.sytes.net`) #Le asigna una URL al servicio
       traefik.http.routers.traefik.service: api@internal #Le asigna el servicio que se va a ejecutar
       traefik.http.routers.traefik.entrypoints: web #Asigna el puerto de entrada
       traefik.http.routers.traefik.middlewares: error-pages-middleware #Asigna un intermediario (En este caso son página de errores)
@@ -88,13 +88,11 @@ networks:
   #Para poder entrar a la configuración del traefik en http
   insecure = true
   dashboard = true
-#Archivo donde se guardan los certificados
-[acme]
-  email = "rafael.romera@civica-soft.com"
+#Configuración del LestEncrypt
+[certificatesResolvers.letsEncrypt.acme]
+  email = "rafaelromeranavarro@gmail.com"
   storage = "/etc/traefik/acme.json"
-  entryPoint = "websecure"
-  onDemand = true
-  onHostRule = true
+  [certificatesResolvers.letsEncrypt.acme.tlsChallenge]
 ```
 
 - Luego creamos la carpeta en donde almacenaremos los servicios:
@@ -117,11 +115,11 @@ mkdir traefik/services
       #El intermediario que va a utilizar
       middlewares = ["proxmox"]
       #La URL que va a reenviar
-      rule = "Host(`proxmox.civica.ra`)"
+      rule = "Host(`vm.borderlands.sytes.net`)"
       #Como es una página segura creamos un TLS
       [http.routers.proxmox.tls]
-        #Creamos un certificado simple
-        certResolver = "sample"
+        #Le asignamos el certificado de LestEncrypt
+        certResolver = "letsEncrypt"
   #Aqui creamos un intermidiario de autentificación básica
   [http.middlewares]
     [http.middlewares.proxmox.basicAuth]
@@ -136,7 +134,7 @@ mkdir traefik/services
         passHostHeader = true
       [[http.services.proxmox.loadBalancer.servers]]
         #La URL que va a cargar el servicio
-        url = "https://192.168.80.150:8006"
+        url = "https://192.168.1.254:8006"
 ```
 
 - Un ejemplo de servicio [TCP](./files/EscritorioRemoto.toml):
@@ -155,19 +153,5 @@ mkdir traefik/services
     [tcp.services.ws]
       [tcp.services.ws.loadBalancer]
         [[tcp.services.ws.loadBalancer.servers]]
-          address = "192.168.80.5:3389"
+          address = "192.168.1.x:3389"
 ```
-
-## Configuración de MkDocs con traefik
-
-- Lo primero es crear otra carpeta separada de la carpeta de traefik en mi caso la llamaré documentos:
-
-```
-mkdir documentos
-```
-
-- Dentro de la carpeta crearemos un [docker compose](./files/docker-compose-mkdocs.yml) para el MkDocs, importante que la versión sea la misma que el archivo docker-compose del traefik.
-
-- En esté archivo hay dos servicios, el primer servicio se encarga de darnos [páginas de error](https://github.com/tarampampam/error-pages) html personalizadas, y el segundo servicio es el MkDocs:
-
-![](./assets/mkdocs-docker-compose.png)

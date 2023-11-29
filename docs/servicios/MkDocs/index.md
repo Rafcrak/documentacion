@@ -1,3 +1,14 @@
+## Configuración de MkDocs con traefik
+
+- Lo primero es crear otra carpeta separada de la carpeta de traefik en mi caso la llamaré documentos:
+
+```
+mkdir mkdocs
+```
+
+- Dentro de la carpeta crearemos un [docker compose](./files/docker-compose-mkdocs.yml) para el MkDocs, importante que la versión sea la misma que el archivo docker-compose del traefik:
+
+```
 version: "3.3"
 
 services:
@@ -29,10 +40,10 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - $HOME/documentacion:/docs
+      - ~{PWD}/documentacion:/docs
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.mkdocs.rule=Host(`borderlands.sytes.net`)"
+      - "traefik.http.routers.mkdocs.rule=Host(`docs.borderlands.sytes.net`)"
       - "traefik.http.routers.mkdocs.entrypoints=web"
       - "traefik.http.routers.mkdocs.middlewares=error-pages-middleware"
     networks:
@@ -40,3 +51,9 @@ services:
 networks:
   traefik:
     external: true
+
+```
+
+- En esté archivo hay dos servicios, el primer servicio se encarga de darnos [páginas de error](https://github.com/tarampampam/error-pages) html personalizadas, y el segundo servicio es el MkDocs:
+
+![](./assets/mkdocs-docker-compose.png)

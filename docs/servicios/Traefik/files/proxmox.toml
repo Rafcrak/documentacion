@@ -12,8 +12,8 @@
       rule = "Host(`vm.borderlands.sytes.net`)"
       #Como es una página segura creamos un TLS
       [http.routers.proxmox.tls]
-        #Creamos un certificado simple
-        certResolver = "sample"
+        #Le asignamos el certificado de LestEncrypt
+        certResolver = "letsEncrypt"
   #Aqui creamos un intermidiario de autentificación básica 
   [http.middlewares]
     [http.middlewares.proxmox.basicAuth]

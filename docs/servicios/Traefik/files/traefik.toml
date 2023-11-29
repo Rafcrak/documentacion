@@ -1,4 +1,4 @@
-#Regla para evitar conflictos con los certificados 
+#Regla para evitar conflictos con los certificados
 [serversTransport]
   insecureSkipVerify = true
 #Puertos por lo que entrarán las peticiones
@@ -25,10 +25,8 @@
   #Para poder entrar a la configuración del traefik en http
   insecure = true
   dashboard = true
-#Archivo donde se guardan los certificados
-[acme]
-  email = "rafael.romera@civica-soft.com"
+#Configuración del LestEncrypt
+[certificatesResolvers.letsEncrypt.acme]
+  email = "rafaelromeranavarro@gmail.com"
   storage = "/etc/traefik/acme.json"
-  entryPoint = "websecure"
-  onDemand = true
-  onHostRule = true
+  [certificatesResolvers.letsEncrypt.acme.tlsChallenge]

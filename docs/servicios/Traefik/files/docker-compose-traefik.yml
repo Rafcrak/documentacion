@@ -8,7 +8,7 @@ services:
     container_name: "traefik"
     #Los puertos que abriremos en el docker a la máquina anfitriona
     ports:
-      - "2222:2222" #El primer puerto se refiere a la máquina anfitriona y el segundo a la máquina virtual
+      - "2222:2222"
       - "80:80"
       - "443:443"
       - "8080:8080"
@@ -16,10 +16,10 @@ services:
     #Los ficheros que compartiremos al docker
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock" #Este fichero sirve para conectarse a otros dockers
-      - "$HOME/traefik/traefik.toml:/etc/traefik/traefik.toml:ro" #Este es el fichero de configuración estático (Es la configuración principal)
-      - "$HOME/traefik/acme.json:/etc/traefik/acme.json" #Este fichero sirve para los certificados
-      - "$HOME/traefik/services/:/etc/traefik/services/" #En esta carpeta contendrá ficheros de configuración de servicios
-    #En los labels pondremos las etiquetas que utilizará traefik para crear una redirrección del servicio
+      - "{PWD}/conf/traefik.toml:/etc/traefik/traefik.toml:ro" #Este es el fichero de configuración estático (Es la configuración principal)
+      - "{PWD}/conf/acme.json:/etc/traefik/acme.json" #Este fichero sirve para los certificados
+      - "{PWD}/conf/services/:/etc/traefik/services/" #En esta carpeta contendrá ficheros de configuración de servicios
+    #En los labels pondremos las etiquetas que utilizará traefik para crear una redirrección del servicio (No los utilizo)
     labels:
       traefik.enable: true #Habilita traefik
       traefik.http.routers.traefik.rule: Host(`proxy.borderlands.sytes.net`) #Le asigna una URL al servicio
