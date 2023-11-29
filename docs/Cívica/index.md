@@ -1,10 +1,10 @@
-# Documentación de Windows
+# Documentación Prácticas en Cívica
 
 ## Instalación y Configuración de LAPS
 
 En esta guía vamos a ver como se instala y configura LAPS en el servidor Windows Server 2022, y la instalación automatizada en los clientes del dominio.
 
-### Instalación en Windows Server 2022 
+### Instalación en Windows Server 2022
 
 - El paquete de instalación de LAPS se encuentra en el siguiente [enlace](https://www.microsoft.com/en-us/download/details.aspx?id=46899), dentro de la página hacemos click en Download:
 
@@ -34,26 +34,27 @@ Ejecutamos el archivo de instalación:
 
 - Una vez instalado tenemos que configurarlo para su funcionamiento, para ello tenemos que abrir una PowerShell y importar los módulos:
 
-~~~~
+```
 Import-Module AdmPwd.PS
-~~~~
+```
 
 - Importados los módulos tenemos que actualizar el esquema:
-~~~~
+
+```
 Update-AdmPwdADSchema
-~~~~
+```
 
-- Le asignamos el permiso para poder cambiar la contraseña a la unidad organizativa que en este caso será *Compras*:
+- Le asignamos el permiso para poder cambiar la contraseña a la unidad organizativa que en este caso será _Compras_:
 
-~~~~
+```
 Set-AdmPwdComputerSelfPermission -OrgUnit Compras
-~~~~
+```
 
 - Creamos un grupo para que tenga permisos para leer la contraseña de Administrador:
 
 ![](./assets/LAPS/conf1.png)
 
-- En este caso el grupo se llamara *LAPS*:
+- En este caso el grupo se llamara _LAPS_:
 
 ![](./assets/LAPS/conf2.png)
 
@@ -61,18 +62,18 @@ Set-AdmPwdComputerSelfPermission -OrgUnit Compras
 
 ![](./assets/LAPS/conf3.png)
 
-- Con los siguientes comandos le asignaremos el permiso de poder leer las contraseñas al grupo que hemos creado anteriormente a la unidad organizativa *Compras*:
+- Con los siguientes comandos le asignaremos el permiso de poder leer las contraseñas al grupo que hemos creado anteriormente a la unidad organizativa _Compras_:
 
-~~~~
+```
 Set-AdmPwdReadPasswordPermission -OrgUnit "Compras" -AllowedPrincipals "LAPS"
 Set-AdmPwdResetPasswordPermission -OrgUnit "Compras" -AllowedPrincipals "LAPS"
-~~~~
+```
 
 - Por último vamos a crear una GPO a la unidad organizativa de Compras:
 
 ![](./assets/LAPS/conf4.png)
 
-- La llamaremos *Configuración LAPS*:
+- La llamaremos _Configuración LAPS_:
 
 ![](./assets/LAPS/conf5.png)
 
@@ -82,15 +83,15 @@ Set-AdmPwdResetPasswordPermission -OrgUnit "Compras" -AllowedPrincipals "LAPS"
 
 - En esta dirección tenemos las reglas que nos ofrece LAPS
 
-    - **Password Setting:**  Es la directiva en la que se puede modificar cual va a ser la loSngitud y que tipo de caracteres va a tener la contraseña.
+  - **Password Setting:** Es la directiva en la que se puede modificar cual va a ser la loSngitud y que tipo de caracteres va a tener la contraseña.
 
-    - **Name of administrator account to manage:** Se utiliza cuando se ha cambiado el nombre de la cuenta del administrador, y se le refiere el nuevo nombre de dicha cuenta.
+  - **Name of administrator account to manage:** Se utiliza cuando se ha cambiado el nombre de la cuenta del administrador, y se le refiere el nuevo nombre de dicha cuenta.
 
-    - **Do not allow password expiration time longer than required by policy:** No permite que el tiempo de caducidad de la contraseña sea superior al requerido por la política.
+  - **Do not allow password expiration time longer than required by policy:** No permite que el tiempo de caducidad de la contraseña sea superior al requerido por la política.
 
-    - **Enable Local Admin Password:** Habilita la cuenta de administrador.
+  - **Enable Local Admin Password:** Habilita la cuenta de administrador.
 
-- Habilitamos todas las opciones, la primera dejamos los ajustes por defecto, y en la segunda le vamos a poner *Compras_Admin*:
+- Habilitamos todas las opciones, la primera dejamos los ajustes por defecto, y en la segunda le vamos a poner _Compras_Admin_:
 
 ![](./assets/LAPS/conf7.png)
 
@@ -104,7 +105,7 @@ Set-AdmPwdResetPasswordPermission -OrgUnit "Compras" -AllowedPrincipals "LAPS"
 
 - Con esto el servidor ya estaría configurado.
 
-### __Nota*__
+### **Nota\***
 
 ---
 
@@ -115,15 +116,15 @@ Para poder cambiarle la contraseña instale RSAT en el cliente donde tenia el us
 
 ### Instalación de LAPS de manera automática en el Cliente
 
-- Lo primero que tenemos que hacer es crear una unidad compartida en mi caso se llamará *Programas* la cual tendrá todos los usuario con control total:
+- Lo primero que tenemos que hacer es crear una unidad compartida en mi caso se llamará _Programas_ la cual tendrá todos los usuario con control total:
 
 ![](./assets/LAPS/InstCliente1.png)
 
-- Dentro de la unidad compartida meteremos el archivo de [instalación del LAPS](#instalación-en-windows-server-2022 ) que nos descargamos al principio:
+- Dentro de la unidad compartida meteremos el archivo de [instalación del LAPS](#instalación-en-windows-server-2022) que nos descargamos al principio:
 
 ![](./assets/LAPS/InstCliente2.png)
 
-- Creamos una GPO la cual la llamaremos *Instalar LAPS Clientes*:
+- Creamos una GPO la cual la llamaremos _Instalar LAPS Clientes_:
 
 ![](./assets/LAPS/InstCliente3.png)
 
@@ -145,20 +146,21 @@ Para poder cambiarle la contraseña instale RSAT en el cliente donde tenia el us
 
 - Actualizamos las directivas tanto en el servidor como en el cliete con el siguiete comando de PowerShell:
 
-~~~~
+```
 gpupdate /force
-~~~~
+```
 
 - Nos pedirá que reiniciemos el Cliente Windows, una vez reiniciado nos vamos a Configuración/Aplicaciones para poder ver que se ha instalado correctamente:
 
 ![](./assets/LAPS/InstCliente8.png)
 
 ### Funcionamiento
+
 - Una vez instalado y configurado en el servidor tenemos que abrir la aplicación **LAPS UI**:
 
 ![](./assets/LAPS/func1.png)
 
-- En la casilla de *Computer name:* tenemos que poner el nombre del equipo que tengamos en la unidad organizativa de *Compras*, en mi caso es *ORD-COMPRAS* y le damos a buscar:
+- En la casilla de _Computer name:_ tenemos que poner el nombre del equipo que tengamos en la unidad organizativa de _Compras_, en mi caso es _ORD-COMPRAS_ y le damos a buscar:
 
 ![](./assets/LAPS/func2.png)
 
@@ -269,4 +271,3 @@ y la solucion que encontre fue la siguiente:
 - Por último lanzar este comando, que se encarga de volver a instalar el WSUS:
 
         Install-WindowsFeature UpdateServices -Restart
-

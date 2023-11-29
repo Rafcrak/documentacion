@@ -32,7 +32,7 @@ services:
       - $HOME/documentacion:/docs
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.mkdocs.rule=Host(`www.civica.ra`)"
+      - "traefik.http.routers.mkdocs.rule=Host(`borderlands.sytes.net`)"
       - "traefik.http.routers.mkdocs.entrypoints=web"
       - "traefik.http.routers.mkdocs.middlewares=error-pages-middleware"
     networks:

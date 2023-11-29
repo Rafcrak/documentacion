@@ -4,13 +4,13 @@
 
 - Se utilizarán estos dos comandos:
 
-~~~
+```
 #Para asignar tu nombre
 git config --global user.name "TU_NOMBRE_COMPLETO"
 
 #Para asignar tu correo
 git config --global user.email "TU_CORREO_ELECTRONICO"
-~~~
+```
 
 ## Crear un Repositorio y subir los archivos en GitHub
 
@@ -24,7 +24,7 @@ git config --global user.email "TU_CORREO_ELECTRONICO"
 
 - Para subir los archivos al repositorio que acabamos de crear, tenemos que utilizar los siguientes comandos:
 
-~~~
+```
 #Iniciamos el proyecto
 git init
 
@@ -44,22 +44,22 @@ git remote add origin https://github.com/Rafcrak/NOMBRE_REPOSITORIO.git
 #Por último subimos los archivos en la rama principal
 #al rempositorio que le hemos añadido
 git push -u origin main
-~~~
+```
 
-## Solucion de Errores
+## Solucion de Errores 'No me acuerdo que solucionaba'
 
 ### No permite la subida de archivos a un repositorio privado
 
 - Si al crear un repositorio privado a la hora de subir o clonar los archivos te da el siguiente error:
 
-~~~
+```
 git push -u origin main
 remote: Repository not found.
 fatal: repository 'https://github.com/Rafcrak/documentacion.git/' not found
-~~~
+```
 
 - Para solucionarlo tienes que añadir el usuario de tu cuenta con el siguiente comando:
 
-~~~
+```
 git remote set-url origin https://NOMBRE_USUARIO@github.com/Rafcrak/documentacion.git
-~~~
+```

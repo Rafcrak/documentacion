@@ -9,7 +9,7 @@
       #El intermediario que va a utilizar
       middlewares = ["proxmox"]
       #La URL que va a reenviar
-      rule = "Host(`proxmox.civica.ra`)"
+      rule = "Host(`vm.borderlands.sytes.net`)"
       #Como es una página segura creamos un TLS
       [http.routers.proxmox.tls]
         #Creamos un certificado simple
@@ -28,4 +28,4 @@
         passHostHeader = true
       [[http.services.proxmox.loadBalancer.servers]]
         #La URL que va a cargar el servicio
-        url = "https://192.168.80.150:8006"
+        url = "https://192.168.1.254:8006"

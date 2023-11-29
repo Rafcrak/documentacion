@@ -8,4 +8,4 @@
   [tcp.services.sshProxmox]
     [tcp.services.sshProxmox.loadBalancer]
     [[tcp.services.sshProxmox.loadBalancer.servers]]
-      address = "192.168.80.150:22"
+      address = "192.168.0.254:22"
