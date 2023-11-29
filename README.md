@@ -1,15 +1,15 @@
-# Bienvenido a la Documentación de Rafael Romera Navarro
+# Bienvenido a la Documentación de Borderlands
 
-Aquí encontraras documentacion sobre mis proyectos de Sistemas.
+Aquí encontraras documentacion sobre mis proyectos.
 
 ## Enlaces de las documentaciones
 
-- [Enlace a la documentación de Windows](./docs/windows/index.md)
+- [Servicios](./servicios/index.md)
 
-- [Enlace a la documentación de Servicios](./docs/servicios/index.md)
+- [Docker](./docker/index.md)
 
-- [Enlace a la documentación de Docker](./docs/docker/index.md)
+- [Kubernetes](./kubernetes/index.md)
 
-- [Enlace a la documentación de Kubernetes](./docs/kubernetes/index.md)
+- [Git](./git/index.md)
 
-- [Enlace a la documentación de Git](./docs/git/index.md)
+- [Prácticas en Cívica](./Civica/index.md)

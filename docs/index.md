@@ -12,4 +12,4 @@ Aquí encontraras documentacion sobre mis proyectos.
 
 - [Git](./git/index.md)
 
-- [Prácticas en Cívica](./Cívica/index.md)
+- [Prácticas en Cívica](./Civica/index.md)
