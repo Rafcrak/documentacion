@@ -183,3 +183,31 @@ Para iniciar el servidor es con el script:
 ```
 
 Y con eso ya estaría el servidor funcionando.
+
+## Configuración del terminal en segundo plano
+
+Para poder dejar el servidor del minecraft abierto en segundo plano se hace con el programa **tmux**,
+
+Instalamos el programa con el siguinte comando:
+
+```
+apt install tmux
+```
+
+Comandos de tmux:
+
+- Crear una nueva terminal:
+
+  ```
+  tmux new -s [nombre_del_terminal]
+  ```
+
+- Entrar a una terminal:
+
+  ```
+  tmux attach -t [nombre_del_terminal]
+  ```
+
+- Salir de una terminal: **Ctrl** + **B** y luego la tecla **D**
+
+Dentro de una terminal de tmux puedes ejecutar el servidor y derjarlo en segundo plano sin que se cierre.
