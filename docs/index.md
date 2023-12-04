@@ -8,6 +8,8 @@ Aquí encontraras documentacion sobre mis proyectos.
 
 - [Docker](./docker/index.md)
 
+- [Apuntes](./Apuntes/)
+
 - [Kubernetes](./kubernetes/index.md)
 
 - [Git](./git/index.md)

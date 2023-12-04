@@ -4,7 +4,7 @@
 
 Para crear un servidor del Minecraft lo primero es configurar una IP fija en el servidor desde el siguiente archivo **/etc/network/interfaces**:
 
-```
+````
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
 
@@ -22,18 +22,22 @@ iface ens18 inet6 auto
 iface ens18 inet static # Pongo la  tarjeta de red en estática
 address 192.168.1.251/24 # Pongo la IP fija + máscara de red
 gateway 192.168.1.1 # Y la puerta de enlace
-```
+```E
 
 Luego nos vamos instalamos en el servidor el Java:
 
-```
+````
+
 apt install default-jre default-jdk
+
 ```
 
 Una vez instalado el java nos vamos la carpeta **/opt** y dentro creamos la carpeta donde alojaremos el servidor:
 
 ```
+
 mkdir \*nombre del servidor\*
+
 ```
 
 ## Instalar servidor Spigot
@@ -50,68 +54,88 @@ Elegimos la versión que queramos, le damos click derecho y copiamos el enlace:
 Descargamos el archivo en el servidor con el comando **wget** + **Enlace Copiado**:
 
 ```
+
 wget https://download.getbukkit.org/spigot/spigot-1.20.2.jar
+
 ```
 
 Renombramos el archivo que nos hemos dercargado y le ponemos el nombre de **servidor.jar**:
 
 ```
+
 mv spigot-1.20.2.jar server.jar
+
 ```
 
 Creamos un script para el arranque del servidor:
 
 ```
+
 nano autorun.sh
+
 ```
 
 Con el siguiente contenido:
 
 ```
+
 #!/bin/bash
 java -Xmx2048M -Xms2048M -jar server.jar nogui
+
 # Asignamos la memoria RAM en MB
+
 ```
 
 Le damos permisos de ejecución al script:
 
 ```
+
 chmod +x autorun.sh
+
 ```
 
 Ejecutamos el script:
 
 ```
+
 ./autorun.sh
+
 ```
 
 Una vez ejecutado el programa deben a ver aparecido más ficheros:
 
 ```
+
 root@minecraft:/opt/docs# ls
-autorun.sh  bundler  eula.txt  logs  server.jar  server.properties
+autorun.sh bundler eula.txt logs server.jar server.properties
+
 ```
 
 Editamos el fichero **aula.txt** y cambiamos el **false** a **true**:
 
 ```
+
 #By changing the setting below to TRUE you are indicating your agreement to our EULA (https://aka.ms/MinecraftEULA).
 #Fri Dec 01 11:10:24 CET 2023
 eula=true #Cambiar a true para que permita ejecutar el servidor
+
 ```
 
 Volvemos a ejecutar **autorun.sh** y nos deben aparecer más ficheros:
 
 ```
+
 ls
-autorun.sh           bukkit.yml    crash-reports  logs      server.jar         whitelist.json
-banned-ips.json      bundler       eula.txt       ops.json  server.properties  world
-banned-players.json  commands.yml  help.yml       plugins   spigot.yml
+autorun.sh bukkit.yml crash-reports logs server.jar whitelist.json
+banned-ips.json bundler eula.txt ops.json server.properties world
+banned-players.json commands.yml help.yml plugins spigot.yml
+
 ```
 
 Modíficamos el archivo [**server.properties**](./files/server.properties):
 
 ```
+
 #Minecraft server properties
 #Fri Dec 01 11:15:53 CET 2023
 enable-jmx-monitoring=false
@@ -122,7 +146,7 @@ enable-command-block=false
 enable-query=false
 generator-settings={}
 enforce-secure-profile=true
-level-name=world  # Nombre de la carpeta donde se aloja el mundo del servidor
+level-name=world # Nombre de la carpeta donde se aloja el mundo del servidor
 motd=A Minecraft Server
 query.port=25565
 pvp=true
@@ -172,6 +196,7 @@ enforce-whitelist=false # Activar la WhiteList
 spawn-protection=0 # Protección del Spawn para que no puedan romper bloques
 resource-pack-sha1=
 max-world-size=29999984
+
 ```
 
 Si queremos meter Plugins los tenemos que subir a la carpeta de **plugins**.
@@ -179,7 +204,9 @@ Si queremos meter Plugins los tenemos que subir a la carpeta de **plugins**.
 Para iniciar el servidor es con el script:
 
 ```
+
 ./autorun.sh
+
 ```
 
 Y con eso ya estaría el servidor funcionando.
@@ -191,23 +218,30 @@ Para poder dejar el servidor del minecraft abierto en segundo plano se hace con 
 Instalamos el programa con el siguinte comando:
 
 ```
+
 apt install tmux
+
 ```
 
 Comandos de tmux:
 
 - Crear una nueva terminal:
 
-  ```
-  tmux new -s [nombre_del_terminal]
-  ```
+```
+
+tmux new -s [nombre_del_terminal]
+
+```
 
 - Entrar a una terminal:
 
-  ```
-  tmux attach -t [nombre_del_terminal]
-  ```
+```
+
+tmux attach -t [nombre_del_terminal]
+
+```
 
 - Salir de una terminal: **Ctrl** + **B** y luego la tecla **D**
 
 Dentro de una terminal de tmux puedes ejecutar el servidor y derjarlo en segundo plano sin que se cierre.
+```
