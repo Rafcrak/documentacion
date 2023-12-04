@@ -14,6 +14,6 @@ El certificado te puede servir si buscas:
 - Mostrar fluidez en las soluciones SaaS.
 - Resaltar los conocimientos en las opciones de la nube de Microsoft.
 
-==
+---
 
 _\*SaaS: Es un modelo de software basado en la nube que ofrece aplicaciones a los usuarios finales a través de un navegador de Internet_
