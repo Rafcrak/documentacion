@@ -43,6 +43,8 @@ Las tres rutas de aprendisaje más importantes del **MS-900 Microsoft 365 Fundam
 
 #### Evolución de Office 365 a Microsoft 365
 
+**Office 365** es la evolución de Business Productivity Online Suite (BPOS) de Microsoft. Se diseño para unir sus productos existentes a un servicio en la nube actualizado combinando las aplicaciones principales como World, excel, PowerPoint, etc., y los servicios de colaboración como Exchange, SharePoint y Skype Empresarial. Al principio las suscripciones estaban destinadas a usuarios corporativos, finalmente salieron versiones actualizadas para empresas, consumidores y estudiantes, que incliría el servicio de OneDrive.
+
 ---
 
 _\*SaaS: Es un modelo de software basado en la nube que ofrece aplicaciones a los usuarios finales a través de un navegador de Internet._
