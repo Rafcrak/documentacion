@@ -31,7 +31,7 @@ El certificado te puede servir si buscas:
 
 Microsoft Graph es importante para **Microsoft 365 Copilot** que es una herramienta de productividad que utiliza inteligencia artificial y funciona con modelos de legunje grande **(LLM\*)**. Esta funcionalidad se integra a las aplicaciones y servicio de Microsoft 365 y permiste proporcionar recomendaciones y asistencia inteligente en tiempo real.
 
-#### ¿Qué es Aspectos básicos de Microsoft 365?
+##### ¿Qué es Aspectos básicos de Microsoft 365?
 
 Las tres rutas de aprendisaje más importantes del **MS-900 Microsoft 365 Fundamentals** son:
 
@@ -39,15 +39,15 @@ Las tres rutas de aprendisaje más importantes del **MS-900 Microsoft 365 Fundam
 2. Las capacidades de seguridad y cumplimiento normativo e identidad.
 3. Los precios, las licencias y el soporte técnico.
 
-### Diferencias entre Office 365 y Microsoft 365
+#### Diferencias entre Office 365 y Microsoft 365
 
-#### Evolución de Office 365 a Microsoft 365
+##### Evolución de Office 365 a Microsoft 365
 
 **Office 365** es la evolución de Business Productivity Online Suite (BPOS) de Microsoft. Se diseño para unir sus productos existentes a un servicio en la nube actualizado combinando las aplicaciones principales como World, excel, PowerPoint, etc., y los servicios de colaboración como Exchange, SharePoint y Skype Empresarial. Al principio las suscripciones estaban destinadas a usuarios corporativos, finalmente salieron versiones actualizadas para empresas, consumidores y estudiantes, que incliría el servicio de OneDrive.
 
 El cambio de nombre de **Office 365** a **Microsoft 365** refleja la extensión de carasterísticas y ventajas de las aplicaciones y servicio de Office 365. Microsoft 365 reúne las mejores aplicaciones de productividad de Office 365 con una administración avanzada de dispositivos, seguridad inteligente y servicios en línea innovadores.
 
-#### Las diferencias entre Office 365 y Microsoft 365
+##### Las diferencias entre Office 365 y Microsoft 365
 
 **Office 365** es un servicio basado en la nube que incluye aplicaciones como World, Excel, PowerPoint y Outlook, junto a servicios como Microsoft Exchange, SharePoint, Teams y OneDrive.
 
