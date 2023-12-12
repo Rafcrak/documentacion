@@ -5,6 +5,7 @@ nav:
   - Inicio: "index.md"
   - Servicios: "./servicios/index.md"
   - Docker: "./docker/index.md"
+  - Apuntes: "./Apuntes/index.md"
   - Kubernetes: "./kubernetes/index.md"
   - Prácticas: "./Civica/index.md"
 theme:
