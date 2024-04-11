@@ -22,7 +22,7 @@ iface ens18 inet6 auto
 iface ens18 inet static # Pongo la  tarjeta de red en estática
 address 192.168.1.251/24 # Pongo la IP fija + máscara de red
 gateway 192.168.1.1 # Y la puerta de enlace
-```E
+```
 
 Luego nos vamos instalamos en el servidor el Java:
 

@@ -121,12 +121,47 @@ Despues de unirse, configurar y configurar la suscripción para desarrolladores 
 
 ### Descripción de las soluciones de productividad de Microsoft 365
 
+#### Introducción
+
+Microsoft 365 proporciona herramientas de productividad líderes en el sector, con IA que le ayuda a liberar su creatividad y potencial. Obtenga acceso a una bandeja de entrada de correo electrónico inteligente y a un calendario eficaz a través de Exchange. Dedique menos tiempo a administrar el trabajoy más tiempo a trabajar con las herramientas de administración de trabajo como Project, Planner, Boockings y To Do.
+
+#### Describir las principales herramientas de productividad de Microsoft 365
+
+Las herramientas de productividad son:
+
+- **Colabore desde cualquier lugar** gracias a **Teams** que le permite reunirse, chatear, llamar y colaborar en un solo lugar.
+- **Cree contenido en tiempo real** con su equipo con las **Aplicaciones de Microsoft 365** como **Word**, **Excel**, **PowerPoint** y **OneNote**.
+- **Cree una experiencia de uso de archivos unificadora** donde acceda fácilmenta a los archivos en la nube con **OneDrive**.
+- **Interactuar e informar su organización** compartiendo archivos, datos, noticias, conocimientos y recursos en equipo de proyecto, departamentos y la organización a través de **SharePoint**.
+- **Permanezca conectado**. Envíe, reciba y administre su correo electrónico en **Outlook** con su calendario integrado para realizar el seguimiento de citas y eventos.
+- **Trabaje de forma inteligente con el calendario y el correo electrónico empresarial** con acceso a una bandeja de entrada personalizada y organizada de ver e interactuar con el correo electrónico, y capturar automáticamente eventos en el calendario con **Exchange**.
+- **Organice tareas con contenido enriquecido** en equipo con una administración intuitiva, colaborativa y visual de las tareas a través de **Planer**.
+- **Manténgase al día sin esfuerzo** planeando fácilmente sus proyectos con la eficacia de la programación dinámica en función del esfuerzo necesario, la duración del proyecto y los miembros del equipo asignados a través de **Project**.
+- **Simplifique la programación para ahorrar tiempo** personalizando los detalles y requisitos de las citas y reservas a través de **Bookings**.
+- **Administre la lista de tareas pendientes**, priorice sus tareas y obteng sugerencias a través de **To Do**.
+
+#### Describir cómo las aplicaciones de Microsoft 365 ayudan a aumentar la productividad
+
+**Aplicaciones de Microsoft 365** es un conjunto de aplicaciones con las que mantenerse conectado y realizar tareas diseñando un contenido, trabajando en tiempo real y convertiendo los datos en información mediante las aplicaciones de Office. Las aplicaciones están disponibles tanto en las **Aplicaciones de Microsoft 365 para empresas** como en las suscripciones de **Aplicaciones de Microsoft 365 para negocios**. Estas aplicaciones costan del conjunto de aplicaciones de Office, como **Word, Excel, PowerPoint, OneNote, Outlook, Teams, Publisher y Access** (Publisher y Access solo están disponibles en PC).
+
+Las aplicaciones cuenta con las ventajas de la nube, lo que le propoerciona la flexibilidad de trabajar en cualquier momento, lugar y dispositivo.
+
+- **Trabajar en múltiples dispositivos.**
+- **Trabajar con aplicaciones que estén siempre actualizadas.**
+- **Trabaje de forma inteligente a través de experiencias conectadas.**
+
+#### Descripción de las herramientas de administración del trabajo de Microsoft 365
+
+Las **soluciones de administración del trabajo** a través Microsoft 365 permiten a los equipos trabajar de la manera que desean gracias a las herramientas de administración del trabajo:
+
+##### Microsoft Project
+
 ---
 
 _\*SaaS: Es un modelo de software basado en la nube que ofrece aplicaciones a los usuarios finales a través de un navegador de Internet._
 
 _\*LLM: (Large Language Models): Son redes neuronales o IAs capaces de leer, traducir y resumir texto. Ej: **ChatGPT**._
 
-_\*Enterprise Mobility + Security: es una plataforma de administración y seguridad de la movilidad que ayuda a proteger su organización y capacitar a los empleados. La plataforma icluye Azure Active Directory o Azure AD y Microsoft Intune._
+_\*Enterprise Mobility + Security: es una plataforma de administración y seguridad de la movilidad que ayuda a proteger su organización y capacitar a los empleados. La plataforma incluye Azure Active Directory o Azure AD y Microsoft Intune._
 
 ---
