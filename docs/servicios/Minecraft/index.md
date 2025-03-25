@@ -26,7 +26,7 @@ gateway 192.168.1.1 # Y la puerta de enlace
 
 Luego nos vamos instalamos en el servidor el Java:
 
-````
+```
 
 apt install default-jre default-jdk
 
